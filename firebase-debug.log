@@ -1,0 +1,74 @@
+[debug] [2025-06-19T11:49:18.345Z] ----------------------------------------------------------------------
+[debug] [2025-06-19T11:49:18.347Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js --debug
+[debug] [2025-06-19T11:49:18.348Z] CLI Version:   14.7.0
+[debug] [2025-06-19T11:49:18.348Z] Platform:      win32
+[debug] [2025-06-19T11:49:18.348Z] Node Version:  v22.16.0
+[debug] [2025-06-19T11:49:18.348Z] Time:          Thu Jun 19 2025 08:49:18 GMT-0300 (hora estándar de Argentina)
+[debug] [2025-06-19T11:49:18.348Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-19T11:49:18.351Z] TypeError: Cannot read properties of undefined (reading '0')
+    at Command.<anonymous> (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\index.js:57:21)
+    at Command.listener [as _actionHandler] (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\commander\index.js:413:31)
+    at Command._parseCommand (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\commander\index.js:914:14)
+    at Command.parse (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\commander\index.js:717:10)
+    at cli (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\cli.js:95:30)
+    at Object.<anonymous> (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js:18:5)
+    at Module._compile (node:internal/modules/cjs/loader:1730:14)
+    at Object..js (node:internal/modules/cjs/loader:1895:10)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-06-19T11:49:25.538Z] ----------------------------------------------------------------------
+[debug] [2025-06-19T11:49:25.541Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-06-19T11:49:25.541Z] CLI Version:   14.7.0
+[debug] [2025-06-19T11:49:25.541Z] Platform:      win32
+[debug] [2025-06-19T11:49:25.541Z] Node Version:  v22.16.0
+[debug] [2025-06-19T11:49:25.542Z] Time:          Thu Jun 19 2025 08:49:25 GMT-0300 (hora estándar de Argentina)
+[debug] [2025-06-19T11:49:25.542Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-19T11:49:25.547Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-19T11:49:25.547Z] > authorizing via signed-in user (nahuelmf.sl@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\medic\Desktop\tienda
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-06-19T11:49:34.257Z] Checked if tokens are valid: false, expires at: 1659648471698
+[debug] [2025-06-19T11:49:34.257Z] Checked if tokens are valid: false, expires at: 1659648471698
+[debug] [2025-06-19T11:49:34.257Z] > refreshing access token with scopes: []
+[debug] [2025-06-19T11:49:34.259Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-06-19T11:49:34.259Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-19T11:49:34.433Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-06-19T11:49:34.433Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-19T11:49:34.434Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-06-19T11:49:34.568Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 401
+[debug] [2025-06-19T11:49:34.568Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-06-19T11:49:34.568Z] Got a 401 Unauthenticated error for a call that required authentication. Refreshing tokens.
+[debug] [2025-06-19T11:49:34.568Z] Checked if tokens are valid: false, expires at: 1659648471698
+[debug] [2025-06-19T11:49:34.568Z] Checked if tokens are valid: false, expires at: 1659648471698
+[debug] [2025-06-19T11:49:34.568Z] > refreshing access token with scopes: []
+[debug] [2025-06-19T11:49:34.568Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-06-19T11:49:34.569Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-19T11:49:34.622Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-06-19T11:49:34.622Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-19T11:49:34.623Z] Request to https://firebase.googleapis.com/v1beta1/projects?pageSize=100 had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2025-06-19T11:49:34.624Z] FirebaseError: Request to https://firebase.googleapis.com/v1beta1/projects?pageSize=100 had HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\medic\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.

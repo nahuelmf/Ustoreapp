@@ -1,0 +1,4 @@
+.link-no-decoration {
+  text-decoration: none;
+  color: inherit; /* Opcional: para que no cambie el color */
+}

@@ -26,8 +26,12 @@
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
 }
 
+.product-grid{
+  text-decoration: none;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
