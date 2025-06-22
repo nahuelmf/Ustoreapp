@@ -26,54 +26,81 @@ const ProductDetail = () => {
 
   return (
     
-    <div> 
-      <Link to="/" className="link-no-decoration" >← Volver a la tienda</Link>
-      <img className="App-logo" src="https://firebasestorage.googleapis.com/v0/b/pichuninuni.appspot.com/o/Dise%C3%B1o%20sin%20t%C3%ADtulo.png?alt=media&token=0731df9e-6863-4cad-870f-ad16bc9d6204" alt='imagen'/>
-      <br></br>
-      <img src={product.image} alt={product.name} style={{
-              border: '2px solid #ccc',
-              padding: '20px',
-              width: '500px',
-              textAlign: 'center',
-              marginLeft: '35%'
-            }}/>
-      <h1 style={{
-              padding: '20px',
-              width: '500px',
-              textAlign: 'center',
-              marginLeft: '35%'
-            }}>{product.name}</h1>
-      <p style={{
-              border: '2px solid #ccc',
-              padding: '20px',
-              width: '500px',
-              textAlign: 'center',
-              marginLeft: '35%'
-            }}>{product.description}  </p>
-      <p style={{
-              border: '2px solid #ccc',
-              padding: '20px',
-              width: '500px',
-              textAlign: 'center',
-              marginLeft: '35%',
-            fontSize:'40px'
-            }}>Precio: ${product.price}</p>
-      <button onClick={() => window.open(whatsappURL, '_blank')} style={{
-                textDecoration: 'none',
-                color: 'white',
-                backgroundColor: '#25D366',
-                padding: '10px 15px',
-                width: '200px',
-                borderRadius: '5px',
-                display: 'inline-block',
-                marginTop: '10px',
-                textAlign: 'center',
-                marginLeft: '47%'
-              }}>
-        Comprar 
-      </button>
-      <br></br>
-    </div>
+    <div className="product-container">
+  <Link to="/" className="link-no-decoration back-link">
+    ← Volver
+  </Link>
+
+  <div className="content-center">
+    <img
+      className="app-logo"
+      src="https://firebasestorage.googleapis.com/v0/b/pichuninuni.appspot.com/o/Dise%C3%B1o%20sin%20t%C3%ADtulo.png?alt=media&token=0731df9e-6863-4cad-870f-ad16bc9d6204"
+      alt="imagen"
+    />
+
+    <img
+      src={product.image}
+      alt={product.name}
+      className="product-image"
+    />
+
+    <h1 className="product-name">{product.name}</h1>
+
+    <p className="product-description">{product.description}</p>
+
+    <p className="product-price">Precio: US${product.price}</p>
+
+    <button
+      onClick={() => window.open(whatsappURL, '_blank')}
+      className="buy-button"
+    >
+      Comprar
+    </button>
+  </div>
+  <div
+  style={{
+    margin: '40px auto',
+    padding: '20px',
+    maxWidth: '500px',
+    fontFamily: 'Arial',
+    textAlign: 'center',
+    lineHeight: '1.6',
+  }}
+>
+  <a
+    href="https://www.instagram.com/Ustore.import/"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      display: 'inline-flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      textDecoration: 'none',
+      fontSize: '18px',
+      fontWeight: 'bold',
+      color: '#000',
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'scale(1.05)';
+      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'scale(1)';
+      e.currentTarget.style.boxShadow = 'none';
+    }}
+  >
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/pichuninuni.appspot.com/o/instagram.png?alt=media&token=d3ad52b0-af8d-47cb-b0ec-65e99f2ef38c"
+      alt="Instagram"
+      style={{ width: '60px', height: '60px', marginBottom: '8px' }}
+    />
+    Seguinos en Instagram!
+  </a>
+</div>
+</div>
+
+
   );
 };
 

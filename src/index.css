@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Contenedor principal que se adapta */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Imágenes fluidas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Texto ajustable */
+h1, h2, h3, p {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+/* BOTONES */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Media queries: móviles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  button {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

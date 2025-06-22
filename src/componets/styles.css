@@ -1,4 +1,125 @@
 .link-no-decoration {
   text-decoration: none;
   color: inherit; /* Opcional: para que no cambie el color */
+  margin-left: 45%;
+  text-align: center;
+font-size: 24px;
+font-weight: bold;
+}
+
+.product-container {
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-logo {
+  margin-bottom: 20px;
+}
+
+.product-image {
+  border: 2px solid #ccc;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.product-name {
+  padding: 20px;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 0 20px 0;
+}
+
+.product-description {
+  border: 2px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.product-price {
+  border: 2px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  max-width: 500px;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.buy-button {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #25d366;
+  padding: 10px 15px;
+  width: 200px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+  background-color: #1ebe57;
+}
+
+/* MEDIA QUERY para móviles */
+@media (max-width: 600px) {
+  .product-container {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .app-logo {
+    width: 150px;
+    margin-bottom: 15px;
+  }
+
+  .product-image,
+  .product-name,
+  .product-description,
+  .product-price {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .product-price {
+    font-size: 24px;
+  }
+
+  .buy-button {
+    width: 100%;
+    font-size: 18px;
+  }
+}
+
+.product-description {
+  white-space: pre-line;
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
 }
