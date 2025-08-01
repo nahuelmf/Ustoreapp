@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => (
     backgroundColor: '#fff',
     padding: '20px',
     width: '200px',
-    height: '500px',
+    height: '600px',
     textAlign: 'center',
     boxSizing: 'border-box',
   }}>

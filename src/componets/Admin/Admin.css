@@ -1,0 +1,90 @@
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f8f8f8;
+}
+
+.admin-form-card, .admin-list-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.admin-form-card h2 {
+  text-align: center;
+  color: #333;
+}
+
+.admin-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-form-card input, .admin-form-card textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.admin-form-card button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.admin-form-card button:hover {
+  background-color: #0056b3;
+}
+
+.admin-item-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-item-card:last-child {
+  border-bottom: none;
+}
+
+.admin-item-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.admin-item-info {
+  flex-grow: 1;
+}
+
+.admin-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.admin-actions button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.admin-actions button:last-child {
+  background-color: #dc3545;
+  color: white;
+}

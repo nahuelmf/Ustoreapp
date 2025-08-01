@@ -13,9 +13,12 @@ import './ProductList.css';
 
 
 
+
+
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
+  const [sortBy, setSortBy] = useState('name'); // puede ser 'name', 'price-asc', 'price-desc'
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -57,32 +60,117 @@ function ProductList() {
     />
   </div>
 
-<div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-xl shadow-md flex items-start gap-3 max-w-3xl mx-auto mt-4" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '20px' }}>
-      <div style={{  height: 'auto', marginBottom: '20px' }}>
-        <h2 className="font-semibold text-lg">¡Nuevos productos importados!</h2>
-        <p className="text-sm">
-          Explora nuestra selección exclusiva de productos importados. Calidad garantizada, stock limitado y envíos rápidos.
-        </p>
-      </div>
+<div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E4E3E2FF',
+    border: '2px solid #000000FF',
+    borderRadius: '15px',
+    padding: '20px',
+    maxWidth: '900px',
+    margin: '40px auto',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    gap: '20px',
+    flexWrap: 'wrap',
+  }}
+>
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
+    alt="Producto importado"
+    style={{ width: '100px', height: '100px' }}
+  />
+  <div style={{ textAlign: 'left', maxWidth: '600px' }}>
+    <h2 style={{ fontSize: '24px', marginBottom: '10px', color: '#000000FF' }}>¡Nuevos productos importados!</h2>
+    <p style={{ fontSize: '16px', color: '#555' }}>
+      Explora nuestra selección exclusiva de productos importados. <strong>Calidad garantizada</strong>, stock limitado y <strong>envíos rápidos</strong>.
+    </p>
+  </div>
     </div>
 
   {/* PRODUCTOS en cuadrícula */}
+  <div style={{ textAlign: 'center', marginTop: '20px' }}>
+  <button
+    onClick={() => setSortBy('name')}
+    style={{
+      margin: '0 10px',
+      padding: '10px 20px',
+      borderRadius: '10px',
+      backgroundColor: sortBy === 'name' ? '#1976d2' : '#e0e0e0',
+      color: sortBy === 'name' ? 'white' : 'black',
+      border: 'none',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+    }}
+  >
+    Orden alfabético
+  </button>
+
+  <button
+    onClick={() => setSortBy('price-asc')}
+    style={{
+      margin: '0 10px',
+      padding: '10px 20px',
+      borderRadius: '10px',
+      backgroundColor: sortBy === 'price-asc' ? '#4CAF50' : '#e0e0e0',
+      color: sortBy === 'price-asc' ? 'white' : 'black',
+      border: 'none',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+    }}
+  >
+    Precio: menor a mayor
+  </button>
+
+  <button
+    onClick={() => setSortBy('price-desc')}
+    style={{
+      margin: '0 10px',
+      padding: '10px 20px',
+      borderRadius: '10px',
+      backgroundColor: sortBy === 'price-desc' ? '#f44336' : '#e0e0e0',
+      color: sortBy === 'price-desc' ? 'white' : 'black',
+      border: 'none',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+    }}
+  >
+    Precio: mayor a menor
+  </button>
+</div>
+
+{filtered.length === 0 ? (
+  <div style={{ textAlign: 'center', fontSize: '18px', padding: '40px' }}>
+    No se encontraron productos.
+  </div>
+) : (
   <div
     className="product-grid"
     style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+      display: filtered.length <= 2 ? 'flex' : 'grid',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gridTemplateColumns:
+        filtered.length <= 2 ? undefined : 'repeat(auto-fit, minmax(220px, 1fr))',
       gap: '20px',
       padding: '40px',
       fontFamily: 'Arial',
     }}
   >
-{[...filtered]
-  .sort((a, b) => a.name.localeCompare(b.name)) // Reemplazá 'name' con el campo correcto si es distinto
-  .map((product) => (
-    <ProductCard key={product.id} product={product} />
-  ))}
+    {[...filtered]
+      .sort((a, b) => {
+        if (sortBy === 'name') return a.name.localeCompare(b.name);
+        if (sortBy === 'price-asc') return a.price - b.price;
+        if (sortBy === 'price-desc') return b.price - a.price;
+        return 0;
+      })
+      .map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
   </div>
+)}
+
 
   {/* BOTÓN WHATSAPP FLOTANTE */}
 <a
