@@ -27,10 +27,15 @@
   gap: 1rem;
 }
 
-.admin-form-card input, .admin-form-card textarea {
+.admin-form-card input {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.admin-form-card textarea {
+  height: 200px; /* <--- Ajusta este valor a la altura que desees */
+  resize: vertical; /* <--- Permite redimensionar solo verticalmente. Puedes usar 'none' para deshabilitarlo */
 }
 
 .admin-form-card button {
