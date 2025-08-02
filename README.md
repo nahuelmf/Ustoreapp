@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Ustore (Tienda de Productos)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+¡Bienvenido a Ustore! Esta es una aplicación de demostración construida con React que simula una tienda en línea. Permite a los usuarios explorar productos, filtrarlos por categoría y ordenar los precios. También cuenta con un panel de administración para gestionar el inventario.
 
-## Available Scripts
+## Características Principales
 
-In the project directory, you can run:
+### 1. Interfaz de Usuario
+- **Productos en cuadrícula**: La página principal muestra los productos en una cuadrícula con imágenes, nombres y precios.
+- **Filtrado por categoría**: Los usuarios pueden ver productos de "Electrónica" o "Hogar" de forma independiente.
+- **Ordenamiento de precios**: Los productos se pueden ordenar por nombre (alfabético) o por precio (menor a mayor y viceversa).
+- **Detalle del producto**: Al hacer clic en un producto, se accede a una vista detallada con información específica y una opción para comprar a través de WhatsApp.
+- **Formato de precios dinámico**: Los precios se muestran en `US$` para productos de "Electrónica" y en `$AR` para productos de "Hogar", con el formato de moneda correcto.
 
-### `npm start`
+### 2. Panel de Administración
+- **Vista de productos**: El panel de administración muestra todos los productos, incluyendo los que están pausados.
+- **Gestión de productos**: Se pueden agregar, editar, eliminar y pausar productos.
+- **Validación de categorías**: El panel agrupa los productos por categorías y muestra aquellos que no tienen una categoría asignada.
+- **Estilos consistentes**: El panel de administración tiene un diseño limpio y funcional, con tarjetas de tamaño uniforme y mensajes estilizados para facilitar la gestión.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologías Utilizadas
+- **Frontend**: React.js
+- **Base de Datos**: Google Firebase (Firestore)
+- **Estilos**: CSS puro
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Cómo Instalar y Ejecutar el Proyecto
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone 
+    cd ustore-app
+    ```
+2.  **Instalar dependencias**:
+    ```bash
+    npm install
+    ```
+3.  **Configuración de Firebase**:
+    -   Crea un nuevo proyecto en Firebase Console.
+    -   Copia tu configuración (apiKey, authDomain, etc.).
+    -   Crea un archivo llamado `firebase.js` en la carpeta `src/`.
+    -   Pega tu configuración de Firebase en este archivo.
+4.  **Ejecutar la aplicación**:
+    ```bash
+    npm start
+    ```
+    La aplicación se abrirá en `http://localhost:3000`.

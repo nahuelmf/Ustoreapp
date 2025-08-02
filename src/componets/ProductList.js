@@ -12,8 +12,10 @@ function ProductList() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('name');
-  const [currentPage, setCurrentPage] = useState(1); // Nuevo estado para la página actual
-  const [productsPerPage] = useState(8); // Nuevo estado para productos por página, ajustado a 8
+  // CAMBIO CLAVE: Iniciamos el estado de categoría en 'Electrónica'.
+  const [filterCategory, setFilterCategory] = useState('Electrónica');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(8);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,10 +25,16 @@ function ProductList() {
     fetchProducts();
   }, []);
 
-  // Filtramos los productos según la búsqueda del usuario
-  const filtered = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+  const filtered = products.filter(p => {
+    const isNotPaused = !p.paused;
+    const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
+    
+    // Lógica para filtrar por la categoría seleccionada
+    const matchesCategory = p.category === filterCategory;
 
-  // Ordenamos los productos filtrados
+    return isNotPaused && matchesSearch && matchesCategory;
+  });
+
   const sortedAndFiltered = [...filtered].sort((a, b) => {
     if (sortBy === 'name') return a.name.localeCompare(b.name);
     if (sortBy === 'price-asc') return a.price - b.price;
@@ -34,11 +42,9 @@ function ProductList() {
     return 0;
   });
 
-  // Lógica de paginación
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedAndFiltered.slice(indexOfFirstProduct, indexOfLastProduct);
-
   const totalPages = Math.ceil(filtered.length / productsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -73,6 +79,24 @@ function ProductList() {
             Explora nuestra selección exclusiva de productos importados. <strong>Calidad garantizada</strong>, stock limitado y <strong>envíos rápidos</strong>.
           </p>
         </div>
+      </div>
+
+      {/* BOTONES DE CATEGORÍA */}
+      <div className="category-buttons-container">
+        {/* Botón para filtrar solo por Electrónica */}
+        <button
+          onClick={() => { setFilterCategory('Electrónica'); setCurrentPage(1); }}
+          className={`category-button ${filterCategory === 'Electrónica' ? 'active' : ''}`}
+        >
+          Productos de Electrónica
+        </button>
+        {/* Botón para filtrar solo por Hogar */}
+        <button
+          onClick={() => { setFilterCategory('Hogar'); setCurrentPage(1); }}
+          className={`category-button ${filterCategory === 'Hogar' ? 'active' : ''}`}
+        >
+          Productos del Hogar
+        </button>
       </div>
 
       {/* BOTONES DE ORDENAMIENTO */}
@@ -111,18 +135,19 @@ function ProductList() {
             ))}
           </div>
 
-          {/* Botones de paginación */}
-          <div className="pagination">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => paginate(i + 1)}
-                className={`page-number-button ${currentPage === i + 1 ? 'active' : ''}`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
+          {totalPages > 1 && (
+            <div className="pagination">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i + 1}
+                  onClick={() => paginate(i + 1)}
+                  className={`page-number-button ${currentPage === i + 1 ? 'active' : ''}`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
         </>
       )}
 

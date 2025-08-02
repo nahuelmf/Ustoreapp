@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
-import { Link } from 'react-router-dom';
 import './styles.css';
 
 const ProductDetail = () => {
@@ -24,8 +23,32 @@ const ProductDetail = () => {
 
   const whatsappURL = `https://wa.me/5491159352323?text=Hola!%20Quiero%20comprar%20el%20producto:%20${encodeURIComponent(product.name)}`;
 
+  // ===============================================
+  // Lógica para determinar el símbolo de moneda y el formato
+  // Copiada directamente desde ProductCard.js
+  const isHogar = product.category === 'Hogar';
+  const currencySymbol = isHogar ? '$' : 'U$';
+
+  const formatPrice = (price) => {
+    if (isHogar) {
+      return new Intl.NumberFormat('es-AR', {
+        style: 'currency',
+        currency: 'ARS',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(price);
+    }
+    return `${currencySymbol}${price}`;
+  };
+  // ===============================================
+
   // Nueva función para procesar la descripción.
   const renderDescription = (descriptionText) => {
+    // Verificamos si la descripción existe antes de procesarla
+    if (!descriptionText) {
+      return null;
+    }
+    
     // Dividimos la descripción por saltos de línea
     const lines = descriptionText.split('\n');
     let content = [];
@@ -38,13 +61,13 @@ const ProductDetail = () => {
           content.push(<p key={`p-${index}`}>{currentParagraph}</p>);
           currentParagraph = '';
         }
-      } else if (line.endsWith(':')) {
-        // Si la línea termina con ":", es un encabezado
+      } else if (line.endsWith('  ')) { // Noté que usas 2 espacios, no un tab
+        // Si la línea termina con "  ", es un encabezado
         if (currentParagraph.trim() !== '') {
           content.push(<p key={`p-${index}-before`}>{currentParagraph}</p>);
           currentParagraph = '';
         }
-        content.push(<h3 key={`h3-${index}`}>{line}</h3>);
+        content.push(<h3 key={`h3-${index}`}>{line.trim()}</h3>); // trim() para limpiar
       } else {
         // Si no es un encabezado ni una línea vacía, lo agregamos al párrafo
         currentParagraph += line + ' ';
@@ -58,7 +81,7 @@ const ProductDetail = () => {
 
     return content;
   };
-
+  
   return (
     <div className="product-detail-page">
       <Link to="/" className="back-link">
@@ -80,10 +103,11 @@ const ProductDetail = () => {
         
         <div className="product-details-info">
           <h1 className="product-detail-name">{product.name}</h1>
+          {/* Aquí se renderiza el precio con el nuevo formato */}
+          <p className="product-detail-price">Precio: {formatPrice(product.price)}</p>
           <div className="product-detail-description">
             {renderDescription(product.description)}
           </div>
-          <p className="product-detail-price">Precio: US${product.price}</p>
           
           <button
             onClick={() => window.open(whatsappURL, '_blank')}

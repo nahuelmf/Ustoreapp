@@ -1,5 +1,5 @@
 /* ==================================== */
-/* ESTILOS GLOBALES            */
+/* ESTILOS GLOBALES                     */
 /* ==================================== */
 body {
   margin: 0;
@@ -15,7 +15,7 @@ a {
 }
 
 /* ==================================== */
-/* ENCABEZADO Y BUSCADOR       */
+/* ENCABEZADO Y BUSCADOR                */
 /* ==================================== */
 .header-container {
   display: flex;
@@ -27,7 +27,7 @@ a {
 .App-logo {
   height: auto;
   width: 100%;
-  max-width: 300px; /* Tamaño máximo para el logo */
+  max-width: 300px;
   margin-bottom: 20px;
 }
 
@@ -45,7 +45,7 @@ a {
 }
 
 /* ==================================== */
-/* TARJETA DE INFORMACIÓN      */
+/* TARJETA DE INFORMACIÓN               */
 /* ==================================== */
 .info-card {
   display: flex;
@@ -57,7 +57,7 @@ a {
   padding: 20px;
   max-width: 900px;
   margin: 40px auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   gap: 20px;
   flex-wrap: wrap;
 }
@@ -84,14 +84,16 @@ a {
 }
 
 /* ==================================== */
-/* BOTONES DE ORDENAMIENTO     */
+/* BOTONES DE ORDENAMIENTO              */
 /* ==================================== */
-.sort-buttons-container {
+.sort-buttons-container,
+.category-buttons-container {
   text-align: center;
   margin-top: 20px;
 }
 
-.sort-button {
+.sort-button,
+.category-button {
   margin: 0 10px;
   padding: 10px 20px;
   border-radius: 10px;
@@ -100,7 +102,7 @@ a {
   font-weight: bold;
   color: black;
   background-color: #e0e0e0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 /* Estados activos */
@@ -108,45 +110,43 @@ a {
   background-color: #1976d2;
   color: white;
 }
-
 .sort-button.active-asc {
   background-color: #4CAF50;
   color: white;
 }
-
 .sort-button.active-desc {
   background-color: #f44336;
   color: white;
 }
-
-/* ==================================== */
-/* PRODUCTOS EN CUADRÍCULA     */
-/* ==================================== */
-.no-products-found {
-  text-align: center;
-  font-size: 18px;
-  padding: 40px;
+.category-button.active {
+  background-color: #007bff;
+  color: white;
 }
 
-.product-grid {
+/* ==================================== */
+/* PRODUCTOS EN CUADRÍCULA (VISTA Y ADMIN) */
+/* ==================================== */
+.product-grid,
+.admin-product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   padding: 40px;
-  justify-items: center; /* Centra las tarjetas dentro de cada celda */
+  justify-items: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 /* ==================================== */
-/* PRODUCT CARD (TARJETA)      */
+/* PRODUCT CARD (TARJETA)               */
 /* ==================================== */
 .product-card-link {
   text-decoration: none;
   display: block;
 }
 
-.product-card {
+.product-card,
+.admin-product-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -156,47 +156,52 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   width: 100%;
-  width: 260px;
   padding: 15px;
   text-align: center;
-  height: 100%; /* Permite que las tarjetas dentro del grid tengan la misma altura */
-  min-height: 400px; /* <--- Agrega esta línea para darle una altura mínima */
+  height: 100%;
+  min-height: 400px;
   cursor: pointer;
-  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  box-sizing: border-box;
+  position: relative;
 }
-
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.product-image-container {
+.product-image-container,
+.admin-product-image-container {
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 15px;
-  /* La altura fija se la daremos a la imagen para que funcione mejor */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.product-image {
-  width: 100%;
-  height: 200px; /* Altura fija para todas las imágenes */
+.product-image,
+.admin-product-image {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   display: block;
   transition: transform 0.3s ease-in-out;
 }
-
 .product-card:hover .product-image {
   transform: scale(1.05);
 }
 
-.product-info {
+.product-info,
+.admin-product-info {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.product-name {
+.product-name,
+.admin-product-name {
   font-size: 1.25rem;
   font-weight: 600;
   color: #333;
@@ -204,7 +209,8 @@ a {
   line-height: 1.2;
 }
 
-.product-price {
+.product-price,
+.admin-product-price {
   font-size: 1.15rem;
   font-weight: bold;
   color: #0f9b0f;
@@ -212,7 +218,7 @@ a {
 }
 
 /* ==================================== */
-/* BOTÓN FLOTANTE WHATSAPP     */
+/* BOTÓN WHATSAPP FLOTANTE Y OTROS      */
 /* ==================================== */
 .whatsapp-button {
   position: fixed;
@@ -222,23 +228,18 @@ a {
   animation: pulse 1.2s infinite;
   display: block;
 }
-
 .whatsapp-icon {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
 }
 
-/* ==================================== */
-/* MEDIOS DE PAGO              */
-/* ==================================== */
 .payment-options {
   margin: 40px auto;
   padding: 20px;
@@ -249,23 +250,10 @@ a {
   text-align: center;
   line-height: 1.6;
 }
-
 .payment-icon {
   height: 100px;
   margin-bottom: 20px;
 }
-
-.payment-title {
-  margin-bottom: 10px;
-}
-
-.payment-text {
-  margin: 0;
-}
-
-/* ==================================== */
-/* INSTAGRAM LINK              */
-/* ==================================== */
 .instagram-link-container {
   margin: 40px auto;
   padding: 20px;
@@ -273,7 +261,6 @@ a {
   text-align: center;
   line-height: 1.6;
 }
-
 .instagram-link {
   display: inline-flex;
   flex-direction: column;
@@ -284,16 +271,113 @@ a {
   color: #000;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.instagram-link:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
 .instagram-icon {
   width: 60px;
   height: 60px;
   margin-bottom: 8px;
+}
+
+/* ==================================== */
+/* ESTILOS DE PÁGINA DE DETALLE Y ADMIN */
+/* ==================================== */
+.admin-edit-button,
+.admin-delete-button,
+.admin-pause-button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.admin-edit-button { background-color: #007bff; }
+.admin-delete-button { background-color: #dc3545; }
+.admin-pause-button { background-color: #ffc107; }
+
+/* Mensaje de "No se encontraron productos" */
+.no-products-found-message {
+  text-align: center;
+  padding: 30px; /* Reducimos el padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1rem; /* Reducimos el tamaño de la fuente */
+  font-weight: bold;
+  max-width: 400px; /* Hacemos el contenedor más pequeño */
+  margin: 50px auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.no-products-found-icon {
+  width: 80px; /* Hacemos el icono más chico */
+  height: 80px;
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+/* Estilo para la paginación centrada y con espacios */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  gap: 10px;
+}
+
+.page-number-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 12px; /* Ajustamos el padding de los botones */
+  font-size: 0.9rem; /* Reducimos el tamaño de la fuente */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-number-button:hover {
+  background-color: #e0e0e0;
+}
+
+.page-number-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Estilo para la tarjeta pausada */
+.product-card.paused {
+  opacity: 0.6;
+  background-color: #f0f0f0;
+}
+
+.paused-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+/* Estilos adicionales para la vista de administración */
+.admin-product-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
 /* ==================================== */
@@ -489,111 +573,4 @@ a {
 
 .sort-button:hover {
   transform: translateY(-2px);
-}
-
-/* ==================================== */
-/* PAGINACIÓN                  */
-/* ==================================== */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  gap: 10px;
-}
-
-.page-number-button {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.page-number-button:hover {
-  background-color: #e0e0e0;
-}
-
-.page-number-button.active {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-
-/* Estilos para pantallas pequeñas (móviles) */
-@media (max-width: 768px) {
-  /* Hacemos que los botones de ordenamiento se apilen */
-  .sort-buttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 20px;
-  }
-  
-  /* Ajustamos el margen para los botones apilados */
-  .sort-button {
-    margin: 0;
-  }
-
-  /* Ajustamos el tamaño del logo para móviles */
-  .App-logo {
-    max-width: 200px;
-  }
-
-  /* ESTILO AÑADIDO: Hacemos que el encabezado se apile */
-  .header-container {
-    flex-direction: column;
-    gap: 15px; /* Espacio entre el logo y el buscador */
-    width: 90%; /* Ajustamos el ancho del contenedor */
-    margin: 0 auto; /* Centramos el contenedor */
-  }
-
-  /* ESTILO CORREGIDO: Ajustamos el padding de las secciones para pantallas pequeñas */
-  .product-grid, .info-card {
-    padding: 20px;
-  }
-  
-  /* ESTILO CORREGIDO: Hacemos que la tarjeta de info se ajuste mejor en dispositivos móviles */
-  .info-card {
-    flex-direction: column; /* Apilamos la imagen y el texto */
-    text-align: center;
-    max-width: 90%; /* Limitamos el ancho de la tarjeta para móviles */
-    margin: 20px auto; /* Centramos la tarjeta de info */
-  }
-
-  .info-card-text {
-    text-align: center;
-  }
-
-  /* ESTILO CORREGIDO: La cuadrícula de productos ahora se ve mejor en móviles */
-  .product-grid {
-    grid-template-columns: 1fr; /* Una sola columna para que las tarjetas se apilen */
-    gap: 20px; /* Reducimos el espacio entre tarjetas */
-    padding: 20px 10px; /* Reducimos el padding en los lados */
-  }
-
-  /* ESTILO CORREGIDO Y CLAVE: Le damos a las tarjetas un ancho fijo y las centramos */
-  .product-card {
-    width: 90%; /* Ocupa el 90% del ancho del contenedor del grid */
-    width: 300px; /* Límite para que no se vean demasiado grandes en tablets */
-    margin: 0 auto; /* Centramos la tarjeta individualmente en su celda */
-    height: auto; /* Dejamos que la altura se ajuste automáticamente */
-    min-height: 350px; /* Establecemos una altura mínima para que sean uniformes */
-  }
-
-  /* ESTILO CORREGIDO: Medios de pago centrados y con ancho limitado */
-  .payment-options {
-    max-width: 90%; /* Limita el ancho del contenedor */
-    margin: 20px auto; /* Centramos el contenedor */
-  }
-
-  /* ESTILO AÑADIDO: Ajustamos el tamaño del input de búsqueda */
-  .search-input {
-    width: 90%;
-  }
 }

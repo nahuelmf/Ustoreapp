@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../firebase/';
+import { db } from '../../firebase'; 
 import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import AdminProductCard from './AdminProductCard'; 
 import ProductForm from './ProductForm'; 
-import './admin.css'; 
+import './Admin.css'; 
 
-function Admin() {
+function AdminPanel() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [productToEdit, setProductToEdit] = useState(null);
@@ -50,6 +50,11 @@ function Admin() {
     return <div>Cargando productos del panel de administración...</div>;
   }
 
+  // Filtramos los productos por categoría.
+  const homeProducts = products.filter(product => product.category === 'Hogar');
+  const electronicProducts = products.filter(product => product.category === 'Electrónica');
+  const uncategorizedProducts = products.filter(product => !product.category);
+
   return (
     <div className="admin-panel-container">
       <h1>Panel de Administración</h1>
@@ -61,9 +66,11 @@ function Admin() {
         onProductSaved={fetchProducts}
       />
 
-      <div className="admin-list-container">
-        <div className="product-grid">
-          {products.map((product) => (
+      {/* Sección para productos de Electrónica */}
+      <h3>Productos de Electrónica</h3>
+      <div className="product-grid">
+        {electronicProducts.length > 0 ? (
+          electronicProducts.map((product) => (
             <AdminProductCard
               key={product.id}
               product={product}
@@ -71,8 +78,46 @@ function Admin() {
               onDelete={handleDelete}
               onEdit={handleEdit}
             />
-          ))}
-        </div>
+          ))
+        ) : (
+          <p>No hay productos de electrónica disponibles.</p>
+        )}
+      </div>
+
+      {/* Sección para productos de Hogar */}
+      <h3>Productos de Hogar</h3>
+      <div className="product-grid">
+        {homeProducts.length > 0 ? (
+          homeProducts.map((product) => (
+            <AdminProductCard
+              key={product.id}
+              product={product}
+              onPause={handlePause}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+            />
+          ))
+        ) : (
+          <p>No hay productos de hogar disponibles.</p>
+        )}
+      </div>
+
+      {/* Sección para productos sin categoría */}
+      <h3>Productos sin Categoría</h3>
+      <div className="product-grid">
+        {uncategorizedProducts.length > 0 ? (
+          uncategorizedProducts.map((product) => (
+            <AdminProductCard
+              key={product.id}
+              product={product}
+              onPause={handlePause}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+            />
+          ))
+        ) : (
+          <p>Todos los productos tienen una categoría asignada.</p>
+        )}
       </div>
       
       {productToEdit && (
@@ -86,4 +131,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default AdminPanel;

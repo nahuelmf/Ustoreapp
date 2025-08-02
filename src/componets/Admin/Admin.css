@@ -1,95 +1,208 @@
-.admin-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  background-color: #f8f8f8;
-}
-
-.admin-form-card, .admin-list-container {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 800px;
-}
-
-.admin-form-card h2 {
+/* Estilos para el panel de administración */
+.admin-panel-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
-  color: #333;
 }
 
-.admin-form-card form {
+.product-actions {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: space-around;
+  margin-top: 10px;
 }
 
-.admin-form-card input {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.admin-form-card textarea {
-  height: 200px; /* <--- Ajusta este valor a la altura que desees */
-  resize: vertical; /* <--- Permite redimensionar solo verticalmente. Puedes usar 'none' para deshabilitarlo */
-}
-
-.admin-form-card button {
-  padding: 0.75rem;
+.admin-button {
+  padding: 8px 12px;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
+  border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s ease;
 }
 
-.admin-form-card button:hover {
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.pause-button {
+  background-color: #f39c12;
+  color: white;
+}
+
+.pause-button:hover {
+  background-color: #e67e22;
+}
+
+.edit-button {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #27ae60;
+}
+
+/* Estilo para la tarjeta pausada */
+.product-card.paused {
+  opacity: 0.6;
+  background-color: #f0f0f0;
+}
+
+.paused-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Estilos para el formulario (siempre visible) */
+.product-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0 auto 40px; /* Centrado y con margen inferior */
+}
+
+/* Estilos para el modal (el formulario de edición) */
+.product-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.product-form textarea {
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-actions button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-.admin-item-card {
+.form-image-preview {
+  margin-top: 10px;
+}
+
+/* Estilos para el formulario principal */
+.product-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.product-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Para que el padding no afecte el ancho */
+}
+
+/* Estilo para hacer que el textarea de la descripción sea más alto */
+.form-control-textarea {
+  height: 300px; /* Puedes ajustar este valor según tus necesidades */
+  resize: vertical; /* Permite al usuario redimensionar verticalmente */
+}
+
+.form-actions {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.admin-item-card:last-child {
-  border-bottom: none;
-}
-
-.admin-item-card img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.admin-item-info {
-  flex-grow: 1;
-}
-
-.admin-actions button {
-  padding: 0.5rem 1rem;
+.admin-button.primary-button {
+  background-color: #4CAF50; /* Verde */
+  color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 0.5rem;
 }
 
-.admin-actions button:first-child {
-  background-color: #28a745;
+.admin-button.secondary-button {
+  background-color: #f44336; /* Rojo */
   color: white;
+  border: none;
 }
 
-.admin-actions button:last-child {
-  background-color: #dc3545;
-  color: white;
+/* Estilos para el modal de edición */
+.product-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
+

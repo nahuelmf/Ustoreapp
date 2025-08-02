@@ -2,9 +2,9 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ProductList from './componets/ProductList';
 import ProductDetail from './componets/ProductDetail';
-import Admin from './componets/Admin/Admin';
-import Login from './componets/Login/Login';
-import ProtectedRoute from './componets/ProtectedRoute/ProtectedRoute';
+import AdminPanel from './componets/Admin/AdminPanel'; // Tu panel de admin
+import Login from './componets/Login/Login'; // Tu componente de login
+import ProtectedRoute from './componets/ProtectedRoute/ProtectedRoute'; // Tu componente de ruta protegida
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           path="/admin" 
           element={
             <ProtectedRoute>
-              <Admin />
+              <AdminPanel />
             </ProtectedRoute>
           } 
         />
